@@ -1,0 +1,76 @@
+<web-app xmlns="https://jakarta.ee/xml/ns/jakartaee"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
+         version="6.0">
+  <display-name>pahana-edu-web</display-name>
+
+  <!-- Make the app root (/) load the login page to avoid 404 -->
+  <welcome-file-list>
+    <welcome-file>login.jsp</welcome-file>
+  </welcome-file-list>
+
+  <filter>
+    <filter-name>AuthFilter</filter-name>
+    <filter-class>edu.pahana.web.filters.AuthFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>AuthFilter</filter-name>
+    <url-pattern>/app/*</url-pattern>
+  </filter-mapping>
+
+  <servlet>
+    <servlet-name>AuthServlet</servlet-name>
+    <servlet-class>edu.pahana.web.servlets.AuthServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AuthServlet</servlet-name>
+    <url-pattern>/auth</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>CustomerServlet</servlet-name>
+    <servlet-class>edu.pahana.web.servlets.CustomerServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>CustomerServlet</servlet-name>
+    <url-pattern>/app/customers</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>ItemServlet</servlet-name>
+    <servlet-class>edu.pahana.web.servlets.ItemServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ItemServlet</servlet-name>
+    <url-pattern>/app/items</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>BillingServlet</servlet-name>
+    <servlet-class>edu.pahana.web.servlets.BillingServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BillingServlet</servlet-name>
+    <url-pattern>/app/billing</url-pattern>
+  </servlet-mapping>
+  
+    <servlet>
+    <servlet-name>LogoutServlet</servlet-name>
+    <servlet-class>edu.pahana.web.servlets.LogoutServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>LogoutServlet</servlet-name>
+    <url-pattern>/logout</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>BillPdfServlet</servlet-name>
+    <servlet-class>edu.pahana.web.servlets.BillPdfServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>BillPdfServlet</servlet-name>
+    <url-pattern>/app/bill/pdf</url-pattern>
+  </servlet-mapping>
+
+
+</web-app>
